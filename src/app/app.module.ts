@@ -2,20 +2,17 @@ import { createCustomElement } from '@angular/elements';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Injector } from '@angular/core';
 
-import { AppComponent } from './app.component';
-
 import { AddCartButtonComponent } from './components/add-cart-button/add-cart-button.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    AddCartButtonComponent
+    AddCartButtonComponent,
   ],
   imports: [
     BrowserModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: []
 })
 export class AppModule {
   constructor(
@@ -23,7 +20,7 @@ export class AppModule {
   ) {
   }
 
-  ngDoBoostrap() {
+  ngDoBootstrap() {
     const addCartButtonElement = createCustomElement(AddCartButtonComponent, {
       injector: this.injector,
     });
