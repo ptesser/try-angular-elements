@@ -1,4 +1,80 @@
-# TryAngularElements
+# Try Angular Elements
+
+## Info
+
+The `@angular/elements` package provides the functionality to convert Angular Components to native Web Components using the Custom Elements API.
+
+It uses the same mechanism behind the scenes, but hides away all the boilerplate code.
+
+**Angular Elements** is a bridge to connect **Custom Elements** to **Angular Components**.
+
+## Files required
+
+In order to separate responsability and logic we need files below:
+
+- An Angular libary that contains the custom web components to generate: `ng g lib <lib-name>` (and generate all components needed)
+- An Angular application that acts as connector in order to generate a single `.js` file: `ng g app <lib-name>-element` (for convention). This application hasn't any logic. It only imports library's modules.
+
+```TypeScript
+
+import { LibModule } from 'lib-name';
+
+@NgModule({
+  declarations: [
+    AppComponent,
+  ],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    <LibraryModule>, // --> check here
+  ],
+  providers: [],
+  bootstrap: [], // --> check here
+  schemas: [CUSTOM_ELEMENTS_SCHEMA] // --> check here
+})
+export class AppModule {
+
+  ngDoBootstrap() { // --> check here
+  }
+}
+```
+
+## Output file
+
+`jscat` package will help us to concatenate the multiple files and create the output file, which will be our `<web-component>.js` file.
+
+- Install it `npm install jscat --save-dev`.
+- Add command in `package.json` (one for each library to build)
+
+```JSON
+{
+  ...
+  "scripts": {
+    "package-lts-cart": "jscat ./dist/lts-cart-element/runtime.js ./dist/lts-cart-element/polyfills.js ./dist/lts-cart-element/scripts.js ./dist/lts-cart-element/main.js > htmlapp/lts-cart-element.js",
+    "build-lts-cart": "ng build lts-cart --prod && ng build --project=lts-cart-element --prod  --output-hashing=none && npm run package-lts-cart",
+    "build-all": "npm run build-lts-cart && ng build --prod"
+  }
+}
+```
+
+## Elements
+
+Inside the project there are different libraries. Each lib is related to a group of related web components to generate.
+
+- **lts-cart**: dumb elements used to manage a cart system in Vanilla JS website;
+
+
+### LTS Cart
+
+
+## References
+
+- https://medium.com/angular-in-depth/angular-elements-how-does-this-magic-work-under-the-hood-3684a0b2be95
+- https://medium.com/angular-in-depth/how-angular-elements-uses-custom-events-mechanism-to-transmit-components-outputs-outside-angular-7b469386f6e2
+- https://developers.google.com/web/fundamentals/web-components/customelements
+- https://medium.com/angular-in-depth/using-angular-elements-with-ngrx-bc655e1eb212
+
+------------------------------------------
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.7.
 
