@@ -4,8 +4,11 @@ import { NgModule, Injector } from '@angular/core';
 
 import { AddCartButtonComponent } from './components/add-cart-button/add-cart-button.component';
 
+import { AppComponent } from './app.component';
+
 @NgModule({
   declarations: [
+    AppComponent,
     AddCartButtonComponent,
   ],
   imports: [

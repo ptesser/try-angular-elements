@@ -8,6 +8,13 @@
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
-  <lts-add-cart-button></lts-add-cart-button>
+  <lts-add-cart-button item="1"></lts-add-cart-button>
+  <lts-add-cart-button item="2"></lts-add-cart-button>
+  <lts-add-cart-button item="3" storage-key="override-lts-cart"></lts-add-cart-button>
+
+  <script>
+    const addCartButton = document.getElementsByTagName('lts-add-cart-button')[0];
+    console.log(addCartButton);
+  </script>
 </body>
 </html>
