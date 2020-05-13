@@ -18,7 +18,13 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "lts-cart": [
+        "dist/lts-cart/lts-cart",
+        "dist/lts-cart"
+      ]
+    }
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,

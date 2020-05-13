@@ -123,6 +123,46 @@
           }
         }
       }
+    },
+    "lts-cart": {
+      "projectType": "library",
+      "root": "projects/lts-cart",
+      "sourceRoot": "projects/lts-cart/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/lts-cart/tsconfig.lib.json",
+            "project": "projects/lts-cart/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/lts-cart/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lts-cart/src/test.ts",
+            "tsConfig": "projects/lts-cart/tsconfig.spec.json",
+            "karmaConfig": "projects/lts-cart/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lts-cart/tsconfig.lib.json",
+              "projects/lts-cart/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }},
   "defaultProject": "try-angular-elements"
 }
