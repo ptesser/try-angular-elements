@@ -163,6 +163,127 @@
           }
         }
       }
+    },
+    "lts-cart-element": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/lts-cart-element",
+      "sourceRoot": "projects/lts-cart-element/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/lts-cart-element",
+            "index": "projects/lts-cart-element/src/index.html",
+            "main": "projects/lts-cart-element/src/main.ts",
+            "polyfills": "projects/lts-cart-element/src/polyfills.ts",
+            "tsConfig": "projects/lts-cart-element/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/lts-cart-element/src/favicon.ico",
+              "projects/lts-cart-element/src/assets"
+            ],
+            "styles": [
+              "projects/lts-cart-element/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/lts-cart-element/src/environments/environment.ts",
+                  "with": "projects/lts-cart-element/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "lts-cart-element:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "lts-cart-element:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "lts-cart-element:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/lts-cart-element/src/test.ts",
+            "polyfills": "projects/lts-cart-element/src/polyfills.ts",
+            "tsConfig": "projects/lts-cart-element/tsconfig.spec.json",
+            "karmaConfig": "projects/lts-cart-element/karma.conf.js",
+            "assets": [
+              "projects/lts-cart-element/src/favicon.ico",
+              "projects/lts-cart-element/src/assets"
+            ],
+            "styles": [
+              "projects/lts-cart-element/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/lts-cart-element/tsconfig.app.json",
+              "projects/lts-cart-element/tsconfig.spec.json",
+              "projects/lts-cart-element/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/lts-cart-element/e2e/protractor.conf.js",
+            "devServerTarget": "lts-cart-element:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "lts-cart-element:serve:production"
+            }
+          }
+        }
+      }
     }},
   "defaultProject": "try-angular-elements"
 }
