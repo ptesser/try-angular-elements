@@ -1,6 +1,5 @@
-import { createCustomElement } from '@angular/elements';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, Injector } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { AddCartButtonComponent } from './components/add-cart-button/add-cart-button.component';
 
@@ -15,18 +14,19 @@ import { AppComponent } from './app.component';
     BrowserModule
   ],
   providers: [],
-  bootstrap: []
+  bootstrap: [],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule {
   constructor(
-    private readonly injector: Injector,
+    // private readonly injector: Injector,
   ) {
   }
 
   ngDoBootstrap() {
-    const addCartButtonElement = createCustomElement(AddCartButtonComponent, {
-      injector: this.injector,
-    });
-    customElements.define('lts-add-cart-button', addCartButtonElement);
+    // const addCartButtonElement = createCustomElement(AddCartButtonComponent, {
+    //   injector: this.injector,
+    // });
+    // customElements.define('lts-add-cart-button', addCartButtonElement);
   }
 }
