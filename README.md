@@ -10,10 +10,14 @@ It uses the same mechanism behind the scenes, but hides away all the boilerplate
 
 ## Files required
 
-In order to separate responsability and logic we need files below:
+Currently, Angular Elements only supports projects of type `application` to create `Custom Elements`.
 
-- An Angular libary that contains the custom web components to generate: `ng g lib <lib-name>` (and generate all components needed)
-- An Angular application that acts as connector in order to generate a single `.js` file: `ng g app <lib-name>-element` (for convention). This application hasn't any logic. It only imports library's modules.
+This means **you need to generate an additional application**. The sole purpose of the application is to import your angular components and output them as Custom Elements.
+
+So we need to have:
+
+- An Angular `libary` that contains the custom Angular components to transform in Custom Elements: `ng g lib <lib-name>` (and generate all components needed)
+- An Angular `application` that acts as connector in order to generate Custom Element and a single `.js` file: `ng g app <lib-name>-element` (for convention). This application hasn't any logic. It only imports library's modules.
 
 ```TypeScript
 
@@ -73,6 +77,7 @@ Inside the project there are different libraries. Each lib is related to a group
 - https://medium.com/angular-in-depth/how-angular-elements-uses-custom-events-mechanism-to-transmit-components-outputs-outside-angular-7b469386f6e2
 - https://developers.google.com/web/fundamentals/web-components/customelements
 - https://medium.com/angular-in-depth/using-angular-elements-with-ngrx-bc655e1eb212
+- https://medium.com/swlh/angular-elements-create-a-component-library-for-angular-and-the-web-8f7986a82999
 
 ------------------------------------------
 
